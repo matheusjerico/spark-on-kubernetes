@@ -1,4 +1,4 @@
-# Spark no Kubertes
+# Spark no Kubernetes
 >  Esse projeto foi desenvolvido utilizando Linux. Alguns `Targets` do `Makefile` utilizam comandos nativos do Linux.
 
 ## Objetivo
