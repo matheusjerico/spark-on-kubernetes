@@ -1,7 +1,7 @@
 # Spark no Kubernetes
 >  Esse projeto foi desenvolvido utilizando Linux. Alguns `Targets` do `Makefile` utilizam comandos nativos do Linux.
 
-## Objetivo
+## Por que?
 Criar uma insfraestrutura utilizando os princípios de Infraestrutura como Código (IaC) para executar jobs `Spark` utilizandoo `Kubernetes` e `Airflow` utilizando `Terraform`.
 
 Em ambiente de desenvolvimento, vamos utilizar o `minikube` para criar a infraestrutura local, instalar o `Airflow` e o `Spark Operator`. Após a configuração necessária para a Infraestrutura, vamos criar aplicações utilizando Spark.
@@ -22,4 +22,3 @@ make create-infraestructure
 ```bash
 make create-infraestructure
 ```
-
