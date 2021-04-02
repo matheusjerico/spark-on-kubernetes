@@ -29,9 +29,6 @@ RUN chmod 644 $SPARK_HOME/jars/gcs-connector-latest-hadoop2.jar
 ADD https://storage.googleapis.com/spark-lib/bigquery/spark-bigquery-latest.jar $SPARK_HOME/jars
 RUN chmod 644 $SPARK_HOME/jars/spark-bigquery-latest.jar
 
-# Copy local jars files
-COPY ./jars/ $SPARK_HOME/jars
-
 # Setup for the Prometheus JMX exporter.
 # Add the Prometheus JMX exporter Java agent jar for exposing metrics sent to the JmxSink to Prometheus.
 ADD https://repo1.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.11.0/jmx_prometheus_javaagent-0.11.0.jar /prometheus/
