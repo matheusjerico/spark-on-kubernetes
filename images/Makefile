@@ -20,7 +20,6 @@ help: ## Show help menu
 
 .PHONY: .docker-deploy-base-image
 .docker-deploy-base-image: .docker-build-base-image ## Deploy docker base image ... Add `-e TAG=some_tag` to set a tag
-	gcloud config set project ${PROJECT}
 	docker tag ${BASE_IMAGE_NAME}:${TAG} ${REPOSITORY}/${BASE_IMAGE_NAME}:${TAG}
 
 .PHONY: .docker-deploy-custom-image
