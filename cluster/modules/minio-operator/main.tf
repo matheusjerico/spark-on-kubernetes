@@ -14,4 +14,33 @@ resource "helm_release" "minio" {
     value = "secretKey"
   }
 
+  set {
+    name  = "buckets[0].name"
+    value = "raw"
+  }
+
+  set {
+    name  = "buckets[0].policy"
+    value = "public"
+  }
+
+  set {
+    name  = "buckets[0].purge"
+    value = "false"
+  }
+
+  set {
+    name  = "buckets[1].name"
+    value = "semantic"
+  }
+
+  set {
+    name  = "buckets[1].policy"
+    value = "public"
+  }
+
+  set {
+    name  = "buckets[1].purge"
+    value = "false"
+  }
 }
