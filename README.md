@@ -24,13 +24,25 @@ make install-requirements
 
 ### 2. Criar o Cluster
 
-
 > Para configurar o sincronismo de criação de `DAGs` entre o Airflow e o Github, crie um `personal access token` na sua conta do [Github](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) e altere no arquivo `spark-on-kubernetes/cluster/modules/airflow/main.tf` o valor `PERSONAL_TOKEN_GIT` pelo token criado.
 
 - Criar a infraestrutura utilizando `Makefile`:
 ```bash
 make create-infraestructure
 ```
+
+Após criar o cluster, temos que criar duas *connections* no Airflow:
+- minikube:
+```json
+{"name": "minikube", "in-cluster-configuration": "true"}
+```
+- minio:
+```json
+{"name": "minio", "type": "s3", "extra": "{'aws_access_key_id': 'accessKey', 'aws_secret_access_key': 'secretKey', 'host': 'http://minio.minio.svc.Cluster.Local:9000'}"}
+```
+
+Para o exemplo do Fifa, temos que subir o arquivo `data/data.csv` dentro do bucket `raw` no Minio. Caso o bucket `raw` e `semantic` não existam, crie.
+
 
 ### 3. Deletar o Cluster
 > Caso seja necessário destruir a infraestrutura criada com `Terraform` e `Minikube`, execute:
@@ -97,6 +109,11 @@ Dentro dessa pasta estão as configurações necessárias para criar as DAGs do 
     └── minio-fifa-spark-operator.py
 ```
 Nesse caso, temos apenas uma DAG que tem o objetivo de fazer um processo de ETL utilizando Spark e Airflow. No processo de ETL, o Spark vai consumir os dados do jogo `FIFA 19` do bucket `raw` no Minio, fazer uma transformação e escrever o resultado no bucket `semantic`.
+
+Para adicionar novas `DAGs` no Airflow, basta criar um novo diretório dentro de `dags` com o `.yaml` do Spark Application e o código da DAGs dentro do diretório.
+
+# Data
+Neste diretório temos alguns arquivos de dados que foram utilizados como exemplo. Utilizamos esses arquivos no Minio, no bucket `raw`.
 
 <!-- 
 ## Documentação
