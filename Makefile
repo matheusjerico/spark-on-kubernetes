@@ -25,5 +25,5 @@ connect-minio: ## [CONNECT] Make port forward with minio on port 9000.
 
 .PHONY: docker-deploy
 docker-deploy: ## [IMAGES] Build and push docker.
-	$(MAKE) -C images docker-deploy -e TAG=0.0.1
+	$(MAKE) -C images docker-deploy
 
