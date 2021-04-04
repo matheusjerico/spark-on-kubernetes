@@ -26,7 +26,7 @@ resource "helm_release" "airflow" {
 
   set {
     name  = "git.dags.repositories[0].repository"
-    value = "https://matheusjerico:<PERSONAL_TOKEN_GIT>@github.com/matheusjerico/spark-on-kubernetes.git"
+    value = "https://matheusjerico:PERSONAL_TOKEN_GIT@github.com/matheusjerico/spark-on-kubernetes.git"
   }
 
   set {
@@ -44,4 +44,33 @@ resource "helm_release" "airflow" {
     value = "dags"
   }
 
+  set {
+    name  = "web.extraVolumeMounts[0].name"
+    value = "requirements"
+  }
+
+  set {
+    name  = "web.extraVolumeMounts[0].mountPath"
+    value = "/bitnami/python/"
+  }
+
+  set {
+    name  = "web.extraVolumes[0].name"
+    value = "requirements"
+  }
+
+  set {
+    name  = "web.extraVolumes[0].configMap.name"
+    value = "requirements"
+  }
+
+  set {
+    name  = "serviceAccount.create"
+    value = "true"
+  }
+
+  set {
+    name  = "serviceAccount.name"
+    value = "airflow-operator"
+  }
 }
