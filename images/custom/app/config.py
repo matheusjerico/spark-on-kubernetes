@@ -1,8 +1,9 @@
 from pyspark import SparkContext, SparkConf
+from pyspark.sql import SparkSession
 
 conf = (
 SparkConf()
-    .set("spark.hadoop.fs.s3a.endpoint", "http://minio.minio.svc.cluster.local:9000")
+    .set("spark.hadoop.fs.s3a.endpoint", "http://10.99.172.190:9000")
     .set("spark.hadoop.fs.s3a.access.key", "accessKey")
     .set("spark.hadoop.fs.s3a.secret.key", "secretKey")
     .set("spark.hadoop.fs.s3a.path.style.access", True)
