@@ -6,7 +6,7 @@ metadata:
 spec:
   type: Python
   mode: cluster
-  image: "matheusjerico/pyspark-custom-v3.0.0:0.0.1"
+  image: "matheusjerico/pyspark-custom-v3.0.0:0.0.11"
   imagePullPolicy: Always
   mainApplicationFile: "local:///app/etl.py"
   sparkVersion: "3.0.0"
@@ -17,7 +17,7 @@ spec:
     onSubmissionFailureRetries: 5
     onSubmissionFailureRetryInterval: 20
   hadoopConf:
-    "fs.s3a.endpoint": "http://minio.minio.svc.cluster.local:9000"
+    "fs.s3a.endpoint": "http://10.99.172.190:9000"
   driver:
     cores: 1
     coreLimit: "1200m"
